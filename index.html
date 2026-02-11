@@ -1858,6 +1858,12 @@
                 if (gameBoardHistory.length > 0) {
                     gameBoardHistory.pop();
                 }
+                // 停止自动播放，避免卡住
+                if (autoPlayInterval) {
+                    console.warn(`着法 "${notation}" 执行失败，停止自动播放`);
+                    toggleAutoPlay();
+                    showMessage(`着法 "${notation}" 解析失败，自动播放已停止`, 'warning');
+                }
             }
         }
 
