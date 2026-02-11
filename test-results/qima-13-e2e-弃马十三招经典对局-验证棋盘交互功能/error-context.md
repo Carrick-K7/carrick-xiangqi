@@ -1,0 +1,148 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - heading "🏮 象棋 AI 助手" [level=1] [ref=e4]
+    - paragraph [ref=e5]: AI 分析胜率 · 经典棋谱学习 · 提升棋艺
+  - complementary [ref=e6]:
+    - generic [ref=e7]: 🤖 经典棋谱
+    - generic [ref=e8]:
+      - button "全部" [ref=e9] [cursor=pointer]
+      - button "古谱" [ref=e10] [cursor=pointer]
+      - button "名局" [ref=e11] [cursor=pointer]
+      - button "教程" [ref=e12] [cursor=pointer]
+    - generic [ref=e13]:
+      - generic [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]: 第1局 气吞关右
+        - generic [ref=e16]:
+          - text: 烂柯神机 · 中等
+          - generic [ref=e17]: 红胜
+      - generic [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: 第2局 马跃檀溪
+        - generic [ref=e20]:
+          - text: 烂柯神机 · 中等
+          - generic [ref=e21]: 红胜
+      - generic [ref=e22] [cursor=pointer]:
+        - generic [ref=e23]: 弃马十三招
+        - generic [ref=e24]:
+          - text: 橘中秘 · 较难
+          - generic [ref=e25]: 红胜
+      - generic [ref=e26] [cursor=pointer]:
+        - generic [ref=e27]: 屏风马破当头炮
+        - generic [ref=e28]:
+          - text: 梅花谱 · 困难
+          - generic [ref=e29]: 黑胜
+      - generic [ref=e30] [cursor=pointer]:
+        - generic [ref=e31]: 千里独行
+        - generic [ref=e32]:
+          - text: 适情雅趣 · 较难
+          - generic [ref=e33]: 和棋
+      - generic [ref=e34] [cursor=pointer]:
+        - generic [ref=e35]: 胡荣华 - 当头炮对屏风马
+        - generic [ref=e36]:
+          - text: 现代名局 · 困难
+          - generic [ref=e37]: 红胜
+      - generic [ref=e38] [cursor=pointer]:
+        - generic [ref=e39]: 许银川 - 飞相局
+        - generic [ref=e40]:
+          - text: 现代名局 · 困难
+          - generic [ref=e41]: 红胜
+      - generic [ref=e42] [cursor=pointer]:
+        - generic [ref=e43]: 王天一 - 仙人指路
+        - generic [ref=e44]:
+          - text: 现代名局 · 极难
+          - generic [ref=e45]: 红胜
+      - generic [ref=e46] [cursor=pointer]:
+        - generic [ref=e47]: 当头炮开局基础
+        - generic [ref=e48]:
+          - text: 基础教程 · 简单
+          - generic [ref=e49]: 学习中
+      - generic [ref=e50] [cursor=pointer]:
+        - generic [ref=e51]: 屏风马防守要领
+        - generic [ref=e52]:
+          - text: 基础教程 · 简单
+          - generic [ref=e53]: 学习中
+      - generic [ref=e54] [cursor=pointer]:
+        - generic [ref=e55]: 马后炮杀法
+        - generic [ref=e56]:
+          - text: 基础教程 · 简单
+          - generic [ref=e57]: 学习中
+  - generic [ref=e58]:
+    - generic [ref=e59]:
+      - img:
+        - generic: 楚 河
+        - generic: 汉 界
+      - generic [ref=e60]:
+        - generic [ref=e62] [cursor=pointer]: 車
+        - generic [ref=e64] [cursor=pointer]: 馬
+        - generic [ref=e66] [cursor=pointer]: 象
+        - generic [ref=e68] [cursor=pointer]: 士
+        - generic [ref=e70] [cursor=pointer]: 將
+        - generic [ref=e72] [cursor=pointer]: 士
+        - generic [ref=e74] [cursor=pointer]: 象
+        - generic [ref=e76] [cursor=pointer]: 馬
+        - generic [ref=e78] [cursor=pointer]: 車
+        - generic [ref=e90] [cursor=pointer]: 砲
+        - generic [ref=e97] [cursor=pointer]: 砲
+        - generic [ref=e100] [cursor=pointer]: 卒
+        - generic [ref=e103] [cursor=pointer]: 卒
+        - generic [ref=e106] [cursor=pointer]: 卒
+        - generic [ref=e109] [cursor=pointer]: 卒
+        - generic [ref=e112] [cursor=pointer]: 卒
+        - generic [ref=e132] [cursor=pointer]: 兵
+        - generic [ref=e135] [cursor=pointer]: 兵
+        - generic [ref=e138] [cursor=pointer]: 兵
+        - generic [ref=e141] [cursor=pointer]: 兵
+        - generic [ref=e144] [cursor=pointer]: 兵
+        - generic [ref=e147] [cursor=pointer]: 炮
+        - generic [ref=e154] [cursor=pointer]: 炮
+        - generic [ref=e166] [cursor=pointer]: 俥
+        - generic [ref=e168] [cursor=pointer]: 傌
+        - generic [ref=e170] [cursor=pointer]: 相
+        - generic [ref=e172] [cursor=pointer]: 仕
+        - generic [ref=e174] [cursor=pointer]: 帥
+        - generic [ref=e176] [cursor=pointer]: 仕
+        - generic [ref=e178] [cursor=pointer]: 相
+        - generic [ref=e180] [cursor=pointer]: 傌
+        - generic [ref=e182] [cursor=pointer]: 俥
+    - generic [ref=e183]:
+      - generic [ref=e184]: 轮到红方走棋 - 红方先行
+      - generic [ref=e185]: 点击己方棋子进行选择
+    - generic [ref=e186]:
+      - button "🤖 AI 分析" [ref=e187] [cursor=pointer]:
+        - generic [ref=e188]: 🤖
+        - text: AI 分析
+      - button "🔄 重置" [active] [ref=e189] [cursor=pointer]:
+        - generic [ref=e190]: 🔄
+        - text: 重置
+      - button "↩️ 悔棋" [ref=e191] [cursor=pointer]:
+        - generic [ref=e192]: ↩️
+        - text: 悔棋
+    - generic [ref=e193]:
+      - generic [ref=e194]: 💡 操作提示
+      - generic [ref=e195]:
+        - text: 1. 点击己方棋子选中，可行走法会以绿色圆圈提示
+        - text: 2. 点击目标位置移动棋子
+        - text: 3. 悔棋可撤销最近一步操作
+  - complementary [ref=e196]:
+    - generic [ref=e197]:
+      - generic [ref=e198]: 当前局势评估
+      - generic [ref=e199]:
+        - generic [ref=e200]: 红方 50%
+        - generic [ref=e201]: 黑方 50%
+    - generic [ref=e202]:
+      - generic [ref=e203]: 🤖 AI 推荐着法
+      - generic [ref=e204]: 点击"AI 分析"获取建议
+      - generic [ref=e205]: 我将分析当前局势，为您推荐最佳着法
+    - generic [ref=e206]:
+      - generic [ref=e207]:
+        - generic [ref=e208]: 📋 着法记录
+        - generic [ref=e209]: 0 步
+      - generic [ref=e211]: 暂无着法
+    - generic [ref=e212]:
+      - button "🔃 翻转棋盘" [ref=e213] [cursor=pointer]
+      - button "💾 保存棋局" [ref=e214] [cursor=pointer]
+      - button "📂 加载棋局" [ref=e215] [cursor=pointer]
+      - button "❓ 帮助" [ref=e216] [cursor=pointer]
+```
