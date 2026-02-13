@@ -87,6 +87,93 @@
         .game-list {
             flex: 1;
             overflow-y: auto;
+            max-height: calc(100vh - 280px);
+            padding-right: 4px;
+        }
+        
+        .game-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .game-list::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+        
+        .game-list::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+        
+        .game-list::-webkit-scrollbar-thumb:hover {
+            background: #39C5BB;
+        }
+        
+        /* 搜索框 */
+        .search-box {
+            margin-bottom: 12px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #39C5BB;
+            box-shadow: 0 0 0 3px rgba(57, 197, 187, 0.1);
+        }
+        
+        .search-input::placeholder {
+            color: #999;
+        }
+        
+        /* 专辑分组 */
+        .collection-group {
+            margin-bottom: 16px;
+        }
+        
+        .collection-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .collection-header:hover {
+            background: #e8f4f8;
+        }
+        
+        .collection-name {
+            font-weight: 600;
+            font-size: 13px;
+            color: #2c3e50;
+        }
+        
+        .collection-count {
+            font-size: 11px;
+            color: #7f8c8d;
+            background: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        
+        .collection-games {
+            padding-left: 8px;
+        }
+        
+        .collection-games.collapsed {
+            display: none;
         }
         
         .game-item {
@@ -352,32 +439,56 @@
         
         .piece.selected {
             box-shadow: 
-                0 0 0 4px #39C5BB, 
-                0 5px 20px rgba(0,0,0,0.4),
+                0 0 0 3px rgba(57, 197, 187, 0.6), 
+                0 8px 25px rgba(0,0,0,0.3),
                 inset 0 2px 3px rgba(255,255,255,0.4);
-            transform: scale(1.08);
-            animation: pieceSelected 0.3s ease;
-        }
-        
-        @keyframes pieceSelected {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1.08); }
+            transform: translateY(-3px);
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         .piece.moving {
             z-index: 100;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        box-shadow 0.35s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
         
+        /* 棋子落定动画 */
+        .piece.placed {
+            animation: piecePlaced 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes piecePlaced {
+            0% { transform: scale(1.05); }
+            60% { transform: scale(0.98); }
+            100% { transform: scale(1); }
+        }
+        
+        /* 吃子动画 - 柔和消失 */
         .piece.captured {
-            animation: pieceCaptured 0.5s ease forwards;
+            animation: pieceCaptured 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
         
         @keyframes pieceCaptured {
             0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.5; }
-            100% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(0.85); opacity: 0; }
+        }
+        
+        /* 最后走子标记 */
+        .last-move-indicator {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, rgba(57, 197, 187, 0.9) 0%, rgba(57, 197, 187, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 4;
+            animation: indicatorPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes indicatorPulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 0.3; }
         }
         
         /* AI 分析面板 */
@@ -543,13 +654,12 @@
         }
         
         .btn-danger {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            background: #e74c3c;
             color: white;
         }
         
         .btn-danger:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(231,76,60,0.4);
+            background: #c0392b;
         }
         
         .button-group {
@@ -557,6 +667,39 @@
             gap: 10px;
             flex-wrap: wrap;
             justify-content: center;
+            margin-top: 16px;
+        }
+        
+        /* 统一按钮样式 - 简化配色 */
+        .nav-btn, .auto-play-btn, .quick-action-btn {
+            padding: 10px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            color: #2c3e50;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .nav-btn:hover, .auto-play-btn:hover, .quick-action-btn:hover {
+            background: #39C5BB;
+            color: white;
+            border-color: #39C5BB;
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: #f0f0f0;
+            border-color: #ddd;
+            color: #999;
+        }
+        
+        .auto-play-btn.playing {
+            background: #e74c3c;
+            color: white;
+            border-color: #e74c3c;
         }
         
         /* 着法列表 */
@@ -614,7 +757,14 @@
         
         .move-notation {
             font-weight: 600;
-            color: #2c3e50;
+        }
+        
+        .move-notation.red-move {
+            color: #e74c3c;
+        }
+        
+        .move-notation.black-move {
+            color: #34495e;
         }
         
         .move-side {
@@ -780,33 +930,6 @@
             margin-bottom: 12px;
         }
         
-        .nav-btn {
-            padding: 10px 14px;
-            border: none;
-            border-radius: 8px;
-            background: white;
-            color: #2c3e50;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .nav-btn:hover {
-            background: #39C5BB;
-            color: white;
-            transform: translateY(-1px);
-        }
-        
-        .nav-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
         .auto-play-controls {
             display: flex;
             align-items: center;
@@ -814,29 +937,6 @@
             gap: 10px;
             padding-top: 12px;
             border-top: 1px solid #e0e0e0;
-        }
-        
-        .auto-play-btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 6px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .auto-play-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
-        }
-        
-        .auto-play-btn.playing {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         }
         
         .speed-selector {
@@ -937,26 +1037,6 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
         }
-        
-        .quick-action-btn {
-            padding: 10px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            background: white;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-        }
-        
-        .quick-action-btn:hover {
-            background: #f8f9fa;
-            border-color: #39C5BB;
-            color: #39C5BB;
-        }
     </style>
 </head>
 <body>
@@ -969,6 +1049,12 @@
         <!-- 左侧：棋谱历史 -->
         <aside class="history-panel">
             <div class="panel-title">经典棋谱</div>
+            
+            <!-- 搜索框 -->
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="🔍 搜索棋谱名称..." oninput="searchGames(this.value)">
+            </div>
+            
             <div class="category-tabs">
                 <button class="category-tab active" onclick="filterGames('all')">全部</button>
                 <button class="category-tab" onclick="filterGames('ancient')">古谱</button>
@@ -1036,9 +1122,8 @@
                 </div>
             </div>
             
-            <div class="status-bar">
-                <div class="status-text" id="statusText">轮到红方走棋 - 红方先行</div>
-                <div class="status-hint" id="statusHint">点击己方棋子进行选择</div>
+            <div class="status-bar" id="statusBar" style="display: none;">
+                <div class="status-text" id="statusText">轮到红方走棋</div>
             </div>
             
             <!-- 棋谱导航器 -->
@@ -1062,10 +1147,10 @@
                 </div>
                 
                 <div class="nav-buttons">
-                    <button class="nav-btn" id="btnFirst" onclick="navigatorFirst()" title="第一手">⏮ 第一手</button>
-                    <button class="nav-btn" id="btnPrev" onclick="navigatorPrev()" title="上一手">◀ 上一手</button>
-                    <button class="nav-btn" id="btnNext" onclick="navigatorNext()" title="下一手">下一手 ▶</button>
-                    <button class="nav-btn" id="btnLast" onclick="navigatorLast()" title="最后一手">最后一手 ⏭</button>
+                    <button class="nav-btn" id="btnFirst" onclick="navigatorFirst()" title="第一手">⏮</button>
+                    <button class="nav-btn" id="btnPrev" onclick="navigatorPrev()" title="上一手">◀</button>
+                    <button class="nav-btn" id="btnNext" onclick="navigatorNext()" title="下一手">▶</button>
+                    <button class="nav-btn" id="btnLast" onclick="navigatorLast()" title="最后一手">⏭</button>
                 </div>
                 
                 <div class="auto-play-controls">
@@ -1073,43 +1158,18 @@
                         ▶️ 自动播放
                     </button>
                     <select class="speed-selector" id="speedSelector" onchange="changeAutoPlaySpeed()">
-                        <option value="2000">速度: 0.5x</option>
-                        <option value="1000" selected>速度: 1x</option>
-                        <option value="500">速度: 2x</option>
-                        <option value="250">速度: 4x</option>
+                        <option value="2000">0.5x</option>
+                        <option value="1000" selected>1x</option>
+                        <option value="500">2x</option>
+                        <option value="250">4x</option>
                     </select>
-                </div>
-                
-                <div class="move-list-toggle" onclick="toggleMoveList()" id="moveListToggle">
-                    📋 显示着法列表
-                </div>
-                
-                <div class="move-list-panel" id="moveListPanel" style="display: none;">
-                    <div class="move-list-grid" id="moveListGrid">
-                        <!-- 着法列表将由JS生成 -->
-                    </div>
                 </div>
             </div>
             
             <div class="button-group" style="margin-top: 16px;">
-                <button class="btn btn-primary" onclick="getAIAdvice()">
-                    <span>🤖</span> AI 分析
-                </button>
-                <button class="btn btn-secondary" onclick="resetBoard()">
-                    <span>🔄</span> 重置
-                </button>
-                <button class="btn btn-danger" onclick="undoMove()">
-                    <span>↩️</span> 悔棋
-                </button>
-            </div>
-            
-            <div class="game-info">
-                <div class="game-info-title">💡 操作提示</div>
-                <div class="game-info-text">
-                    1. 点击己方棋子选中，可行走法会以绿色圆圈提示<br>
-                    2. 点击目标位置移动棋子<br>
-                    3. 悔棋可撤销最近一步操作
-                </div>
+                <button class="btn btn-primary" onclick="getAIAdvice()">🤖 AI 分析</button>
+                <button class="btn btn-secondary" onclick="resetBoard()">🔄 重置</button>
+                <button class="btn btn-danger" onclick="undoMove()">↩️ 悔棋</button>
             </div>
         </section>
         
@@ -1147,7 +1207,6 @@
                 <button class="quick-action-btn" onclick="flipBoard()">🔃 翻转棋盘</button>
                 <button class="quick-action-btn" onclick="saveGame()">💾 保存棋局</button>
                 <button class="quick-action-btn" onclick="loadGameFromHistory()">📂 加载棋局</button>
-                <button class="quick-action-btn" onclick="showHelp()">❓ 帮助</button>
             </div>
         </aside>
     </div>
@@ -1457,7 +1516,7 @@
             if (intersection) intersection.classList.add('selected');
             
             showValidMoves(x, y);
-            updateStatus(`已选中 ${pieceData.type}`, '点击绿色圆圈标记的位置移动');
+            updateStatus(`已选中 ${pieceData.type}`);
         }
 
         function handleIntersectionClick(x, y) {
@@ -1490,7 +1549,7 @@
                 const targetPiece = document.querySelector(`.piece[data-x="${toX}"][data-y="${toY}"]`);
                 if (targetPiece) {
                     targetPiece.classList.add('captured');
-                    setTimeout(() => targetPiece.remove(), 500);
+                    setTimeout(() => targetPiece.remove(), 600);
                 }
             }
             
@@ -1499,6 +1558,7 @@
             
             const pieceEl = document.querySelector(`.piece[data-x="${fromX}"][data-y="${fromY}"]`);
             const toIntersection = document.querySelector(`.intersection[data-x="${toX}"][data-y="${toY}"]`);
+            const fromIntersection = document.querySelector(`.intersection[data-x="${fromX}"][data-y="${fromY}"]`);
             
             if (pieceEl && toIntersection) {
                 pieceEl.dataset.x = toX;
@@ -1507,10 +1567,19 @@
                 let displayX = gameState.flipped ? 8 - toX : toX;
                 let displayY = gameState.flipped ? 9 - toY : toY;
                 
+                // 添加移动动画类
+                pieceEl.classList.add('moving');
+                
+                // 直接更新位置，CSS transition 会处理平滑移动
                 pieceEl.style.gridColumn = displayX + 1;
                 pieceEl.style.gridRow = displayY + 1;
-                pieceEl.classList.add('moving');
-                setTimeout(() => pieceEl.classList.remove('moving'), 400);
+                
+                // 动画结束后添加落定效果
+                setTimeout(() => {
+                    pieceEl.classList.remove('moving');
+                    pieceEl.classList.add('placed');
+                    setTimeout(() => pieceEl.classList.remove('placed'), 250);
+                }, 350);
                 
                 toIntersection.appendChild(pieceEl);
             }
@@ -1525,7 +1594,7 @@
             highlightLastMove();
             
             gameState.currentPlayer = gameState.currentPlayer === 'red' ? 'black' : 'red';
-            updateStatus(`轮到${gameState.currentPlayer === 'red' ? '红' : '黑'}方走棋`, '选择己方棋子');
+            updateStatus(`轮到${gameState.currentPlayer === 'red' ? '红' : '黑'}方走棋`);
             
             checkWinCondition();
         }
@@ -1603,11 +1672,19 @@
             const turn = Math.ceil(gameState.moveCount / 2);
             const isRed = side === 'red';
             
-            item.innerHTML = `
-                <span><span class="move-number">${turn}${isRed ? '.' : '...'}</span> 
-                <span class="move-notation">${move}</span></span>
-                <span class="move-side ${side}">${isRed ? '红' : '黑'}</span>
-            `;
+            // 中国象棋标准记谱格式：第X回合 红方XX 黑方XX
+            if (isRed) {
+                item.innerHTML = `
+                    <span><span class="move-number">第${turn}回合</span> 
+                    <span class="move-notation red-move">${move}</span></span>
+                    <span class="move-side ${side}">红方</span>
+                `;
+            } else {
+                item.innerHTML = `
+                    <span><span class="move-notation black-move">${move}</span></span>
+                    <span class="move-side ${side}">黑方</span>
+                `;
+            }
             
             movesList.appendChild(item);
             movesList.scrollTop = movesList.scrollHeight;
@@ -1618,9 +1695,13 @@
         // ============================================
         // UI 更新
         // ============================================
-        function updateStatus(text, hint = '') {
-            document.getElementById('statusText').textContent = text;
-            document.getElementById('statusHint').textContent = hint;
+        function updateStatus(text) {
+            const statusBar = document.getElementById('statusBar');
+            const statusText = document.getElementById('statusText');
+            if (statusBar && statusText) {
+                statusBar.style.display = 'block';
+                statusText.textContent = text;
+            }
         }
 
         function showMessage(message, type = 'info') {
@@ -1642,6 +1723,8 @@
         // 棋谱浏览
         // ============================================
         let currentCategory = 'all';
+        let searchKeyword = '';
+        let expandedCollections = new Set(['烂柯神机', '橘中秘', '现代名局']);
 
         function renderGameList() {
             const list = document.getElementById('gameList');
@@ -1649,15 +1732,63 @@
                 ? getAllGames() 
                 : getGamesByCollection(currentCategory);
             
-            list.innerHTML = games.map(game => `
-                <div class="game-item" onclick="loadGameFromData('${game.id}')">
-                    <div class="game-name">${game.name}</div>
-                    <div class="game-meta">
-                        ${game.collection} · ${game.difficulty}
-                        <span class="game-result ${getResultClass(game.result)}">${game.result}</span>
+            // 搜索过滤
+            if (searchKeyword.trim()) {
+                games = games.filter(g => 
+                    g.name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+                    g.collection.toLowerCase().includes(searchKeyword.toLowerCase())
+                );
+            }
+            
+            // 按专辑分组
+            const grouped = games.reduce((acc, game) => {
+                const collection = game.collection || '其他';
+                if (!acc[collection]) acc[collection] = [];
+                acc[collection].push(game);
+                return acc;
+            }, {});
+            
+            // 渲染分组列表
+            list.innerHTML = Object.entries(grouped).map(([collection, collectionGames]) => {
+                const isExpanded = expandedCollections.has(collection);
+                return `
+                    <div class="collection-group">
+                        <div class="collection-header" onclick="toggleCollection('${collection}')">
+                            <span class="collection-name">${isExpanded ? '▼' : '▶'} ${collection}</span>
+                            <span class="collection-count">${collectionGames.length}局</span>
+                        </div>
+                        <div class="collection-games ${isExpanded ? '' : 'collapsed'}">
+                            ${collectionGames.map(game => `
+                                <div class="game-item" onclick="loadGameFromData('${game.id}')">
+                                    <div class="game-name">${game.name}</div>
+                                    <div class="game-meta">
+                                        ${game.difficulty}
+                                        <span class="game-result ${getResultClass(game.result)}">${game.result}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
+            
+            if (games.length === 0) {
+                list.innerHTML = '<div style="text-align: center; padding: 40px; color: #999;">没有找到匹配的棋谱</div>';
+            }
+        }
+
+        function toggleCollection(collection) {
+            if (expandedCollections.has(collection)) {
+                expandedCollections.delete(collection);
+            } else {
+                expandedCollections.add(collection);
+            }
+            renderGameList();
+        }
+
+        function searchGames(keyword) {
+            searchKeyword = keyword;
+            renderGameList();
         }
 
         function getResultClass(result) {
@@ -1766,11 +1897,10 @@
             if (currentMoveIndex >= 0) {
                 const isRed = currentMoveIndex % 2 === 0;
                 updateStatus(
-                    `棋谱: ${currentGame.name}`,
-                    `第 ${Math.floor(currentMoveIndex / 2) + 1} 回合 · ${isRed ? '黑方' : '红方'}走棋`
+                    `棋谱: ${currentGame.name} · 第 ${Math.floor(currentMoveIndex / 2) + 1} 回合`
                 );
             } else {
-                updateStatus('轮到红方走棋 - 红方先行', '棋谱已加载，点击"下一手"开始推演');
+                updateStatus('棋谱已加载，点击"下一手"开始推演');
             }
         }
 
@@ -1976,7 +2106,12 @@
                 pieceEl.style.gridColumn = displayX + 1;
                 pieceEl.style.gridRow = displayY + 1;
                 pieceEl.classList.add('moving');
-                setTimeout(() => pieceEl.classList.remove('moving'), 400);
+                
+                setTimeout(() => {
+                    pieceEl.classList.remove('moving');
+                    pieceEl.classList.add('placed');
+                    setTimeout(() => pieceEl.classList.remove('placed'), 250);
+                }, 350);
                 
                 toIntersection.appendChild(pieceEl);
                 
@@ -2089,7 +2224,7 @@
                 el.classList.remove('last-move');
             });
             
-            updateStatus('轮到红方走棋 - 红方先行', '点击己方棋子进行选择');
+            updateStatus('轮到红方走棋 - 红方先行');
             
             renderPieces();
             showMessage('棋盘已重置', 'success');
@@ -2127,7 +2262,7 @@
                 el.classList.remove('last-move');
             });
             
-            updateStatus(`轮到${gameState.currentPlayer === 'red' ? '红' : '黑'}方走棋`, '悔棋成功');
+            updateStatus(`轮到${gameState.currentPlayer === 'red' ? '红' : '黑'}方走棋`);
             showMessage('悔棋成功', 'success');
         }
 

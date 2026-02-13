@@ -416,32 +416,41 @@ const MoveParser = (function() {
 
     /**
      * 将坐标转换为中文记谱法
+     * 规则：
+     * - 红方列号用中文数字（一至九），黑方用阿拉伯数字（1-9）
+     * - 棋子显示与棋盘一致（红方用异体字，黑方用传统字）
      */
     function toNotation(move) {
         const { fromX, fromY, toX, toY, piece } = move;
         const color = piece.color;
         const isRed = color === 'red';
         
-        const pieceChar = pieceToChinese[pieceMap[piece.type]].red;
+        // 获取棋子字符（与棋盘显示一致）
+        const pieceType = pieceMap[piece.type];
+        const pieceChar = pieceToChinese[pieceType][color];
         
+        // 列号：红方用中文数字，黑方用阿拉伯数字
         const fromColNum = isRed ? (9 - fromX) : (fromX + 1);
-        const fromCol = numToChinese[fromColNum];
+        const fromCol = isRed ? numToChinese[fromColNum] : fromColNum.toString();
         
         const dy = toY - fromY;
         let action, target;
         
         if (toX === fromX) {
+            // 纵向移动：进/退 + 步数
             const steps = Math.abs(dy);
             action = (isRed && dy < 0) || (!isRed && dy > 0) ? '进' : '退';
-            target = numToChinese[steps];
+            target = isRed ? numToChinese[steps] : steps.toString();
         } else if (toY === fromY) {
+            // 横向移动：平 + 目标列
             action = '平';
             const toColNum = isRed ? (9 - toX) : (toX + 1);
-            target = numToChinese[toColNum];
+            target = isRed ? numToChinese[toColNum] : toColNum.toString();
         } else {
+            // 斜向移动（马、象、士）：进/退 + 目标列
             const toColNum = isRed ? (9 - toX) : (toX + 1);
             action = (isRed && dy < 0) || (!isRed && dy > 0) ? '进' : '退';
-            target = numToChinese[toColNum];
+            target = isRed ? numToChinese[toColNum] : toColNum.toString();
         }
         
         return `${pieceChar}${fromCol}${action}${target}`;
