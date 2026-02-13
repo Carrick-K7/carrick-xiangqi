@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>象棋引擎测试</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .log {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 象棋引擎诊断测试</h1>
+    
+    <div id="status">
+        <p>状态: <span id="statusText">等待测试...</span></p>
+    </div>
+    
+    <div>
+        <button onclick="testEngine()">测试引擎加载</button>
+        <button onclick="clearLog()">清除日志</button>
+    </div>
+    
+    <div class="log" id="log">日志将显示在这里...</div>
+
+    <script src="engine/pikafish.js"></script>
+    <script src="engine/engine.js"></script>
+    
+    <script>
+        const logEl = document.getElementById('log');
+        const statusEl = document.getElementById('statusText');
+        
+        function log(msg, type = 'info') {
+            const time = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : 'info';
+            logEl.innerHTML += `[${time}] <span class="${className}">${msg}</span>\n`;
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+        
+        function clearLog() {
+            logEl.innerHTML = '';
+        }
+        
+        // 捕获所有控制台输出
+        const originalLog = console.log;
+        const originalError = console.error;
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            log(args.join(' '), 'info');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            log(args.join(' '), 'error');
+        };
+        
+        async function testEngine() {
+            clearLog();
+            statusEl.textContent = '测试中...';
+            
+            try {
+                // 1. 检查 Pikafish 是否加载
+                log('1. 检查 Pikafish 脚本...');
+                if (typeof Pikafish === 'undefined') {
+                    throw new Error('Pikafish 未定义 - 脚本可能未加载');
+                }
+                log('✓ Pikafish 脚本已加载', 'success');
+                
+                // 2. 检查 XiangqiEngine 是否加载
+                log('2. 检查 XiangqiEngine 类...');
+                if (typeof XiangqiEngine === 'undefined') {
+                    throw new Error('XiangqiEngine 未定义 - engine.js 可能未加载');
+                }
+                log('✓ XiangqiEngine 类已加载', 'success');
+                
+                // 3. 创建引擎实例
+                log('3. 创建引擎实例...');
+                const engine = new XiangqiEngine();
+                log('✓ 引擎实例创建成功', 'success');
+                
+                // 4. 初始化引擎
+                log('4. 初始化引擎（这可能需要几秒钟）...');
+                await engine.init();
+                
+                if (engine.isReady) {
+                    log('✓ 引擎初始化成功！', 'success');
+                    statusEl.textContent = '引擎可用';
+                    statusEl.style.color = 'green';
+                    
+                    // 5. 测试分析
+                    log('5. 测试局面分析...');
+                    const result = await engine.getBestMove('rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1', 5);
+                    log(`分析结果: ${JSON.stringify(result, null, 2)}`, 'success');
+                } else {
+                    throw new Error('引擎初始化完成但未就绪');
+                }
+                
+            } catch (error) {
+                log(`✗ 错误: ${error.message}`, 'error');
+                console.error(error);
+                statusEl.textContent = '测试失败';
+                statusEl.style.color = 'red';
+            }
+        }
+        
+        // 页面加载时自动测试
+        window.onload = function() {
+            log('页面已加载，点击"测试引擎加载"开始测试');
+        };
+    </script>
+</body>
+</html>

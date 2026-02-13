@@ -28,9 +28,9 @@ echo "   页面标题: $TITLE"
 
 # 3. 部署
 echo "📤 步骤3: 部署文件..."
-sudo mkdir -p "$DEPLOY_DIR"
-sudo rm -rf "$DEPLOY_DIR"/*
-sudo cp -r dist/* "$DEPLOY_DIR/"
+sudo mkdir -p "$DEPLOY_DIR/dist"
+sudo rm -rf "$DEPLOY_DIR/dist"/*
+sudo cp -r dist/* "$DEPLOY_DIR/dist/"
 
 # 4. 验证部署
 echo "✅ 步骤4: 验证部署..."

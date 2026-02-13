@@ -24,12 +24,21 @@ class XiangqiEngine {
     const wasmUrl = 'engine/pikafish.wasm';
     
     try {
+      // 先加载引擎脚本
+      await this._loadScript('engine/pikafish.js');
+      
+      if (typeof Pikafish === 'undefined') {
+        throw new Error('Pikafish script not loaded');
+      }
+
       // 加载 WASM 文件
+      console.log('Loading WASM from:', wasmUrl);
       const response = await fetch(wasmUrl);
       if (!response.ok) {
-        throw new Error(`Failed to load WASM: ${response.status}`);
+        throw new Error(`Failed to load WASM: ${response.status} ${response.statusText}`);
       }
       const wasmBinary = await response.arrayBuffer();
+      console.log('WASM loaded, size:', wasmBinary.byteLength);
 
       // 初始化 Pikafish 模块
       const self = this;
@@ -38,6 +47,7 @@ class XiangqiEngine {
       const moduleConfig = {
         wasmBinary: wasmBinary,
         locateFile: (file) => {
+          console.log('locateFile called for:', file);
           if (file.endsWith('.wasm')) {
             return wasmUrl;
           }
@@ -50,37 +60,32 @@ class XiangqiEngine {
           console.error('[Engine Error]:', text);
         },
         setStatus: (status) => {
-          // console.log('[Engine Status]:', status);
+          console.log('[Engine Status]:', status);
         }
       };
-
-      // 加载引擎脚本
-      await this._loadScript('engine/pikafish.js');
       
       // 创建引擎实例
-      if (typeof Pikafish !== 'undefined') {
-        this.engine = await Pikafish(moduleConfig);
-        
-        // 设置输出处理
-        this.engine.read_stdout = (text) => {
-          self._handleOutput(text);
-        };
+      console.log('Creating Pikafish instance...');
+      this.engine = await Pikafish(moduleConfig);
+      console.log('Pikafish instance created');
+      
+      // 设置输出处理
+      this.engine.read_stdout = (text) => {
+        self._handleOutput(text);
+      };
 
-        // 等待引擎初始化
-        await this._sendCommand('uci');
-        await this._waitFor('uciok', 5000);
-        
-        // 设置引擎参数
-        await this._sendCommand('setoption name Threads value 1');
-        await this._sendCommand('setoption name Hash value 32');
-        await this._sendCommand('isready');
-        await this._waitFor('readyok', 5000);
-        
-        this.isReady = true;
-        console.log('Pikafish 引擎初始化完成');
-      } else {
-        throw new Error('Pikafish not loaded');
-      }
+      // 等待引擎初始化
+      await this._sendCommand('uci');
+      await this._waitFor('uciok', 10000);
+      
+      // 设置引擎参数
+      await this._sendCommand('setoption name Threads value 1');
+      await this._sendCommand('setoption name Hash value 16');
+      await this._sendCommand('isready');
+      await this._waitFor('readyok', 10000);
+      
+      this.isReady = true;
+      console.log('Pikafish 引擎初始化完成');
     } catch (error) {
       console.error('引擎初始化失败:', error);
       throw error;

@@ -17,7 +17,7 @@ const MoveParser = (function() {
 
     // 棋子名称统一映射
     const pieceMap = {
-        '将': 'king', '帥': 'king', '帅': 'king',
+        '将': 'king', '將': 'king', '帥': 'king', '帅': 'king',
         '士': 'advisor', '仕': 'advisor',
         '象': 'elephant', '相': 'elephant',
         '马': 'horse', '馬': 'horse', '傌': 'horse',
@@ -53,9 +53,25 @@ const MoveParser = (function() {
         // 判断红方还是黑方
         const isRed = moveIndex % 2 === 0;
 
-        // 匹配模式：棋子名 + 列数 + 动作 + 目标
-        const pattern = /^([将帅車车馬马炮相象仕士兵卒])([一二三四五六七八九123456789])([平进退])([一二三四五六七八九123456789])$/;
-        const match = notation.match(pattern);
+        // 匹配模式：支持两种格式
+        // 格式1: [棋子][原始列][动作][目标] - 如 "車一平二"
+        // 格式2: [前/后][棋子][动作][步数] - 如 "前车进一" (无前导列号)
+        const pattern1 = /^([将帅車车馬马炮相象仕士兵卒])([一二三四五六七八九123456789])([平进退])([一二三四五六七八九123456789])$/;
+        const pattern2 = /^([前后])([将帅車车馬马炮相象仕士兵卒])([平进退])([一二三四五六七八九123456789])$/;
+        
+        let match = notation.match(pattern1);
+        let prefix = null;
+        
+        if (!match) {
+            // 尝试格式2（前/后前缀）
+            match = notation.match(pattern2);
+            if (match) {
+                prefix = match[1];
+                // pattern2: [full, prefix, piece, action, target]
+                // 需要转换为: piece, fromCol(null), action, target
+                match = [match[0], match[2], null, match[3], match[4]];
+            }
+        }
 
         if (!match) {
             // 特殊处理结果
@@ -70,10 +86,19 @@ const MoveParser = (function() {
         const piece = pieceMap[pieceChar];
         
         // 计算起始列（0-8索引）
-        // 红方：从右向左数（9-1），所以需要转换
-        // 黑方：从左向右数（1-9），直接减1
-        const colNum = chineseToNum[fromColChar];
-        let fromCol = isRed ? (9 - colNum) : (colNum - 1);
+        // 如果有前/后前缀，需要根据棋盘状态确定具体列
+        let fromCol;
+        if (fromColChar) {
+            // 有明确列号
+            const colNum = chineseToNum[fromColChar];
+            fromCol = isRed ? (9 - colNum) : (colNum - 1);
+        } else if (prefix) {
+            // 前/后前缀，先标记为null，在findCoordinates中根据棋盘确定
+            fromCol = null;
+        } else {
+            console.warn('无法确定起始列:', notation);
+            return null;
+        }
 
         const targetNum = chineseToNum[targetChar];
 
@@ -86,6 +111,7 @@ const MoveParser = (function() {
             target: targetNum,
             targetChar,
             isRed,
+            prefix, // '前', '后', 或 undefined
             notation
         };
     }
@@ -99,16 +125,18 @@ const MoveParser = (function() {
     function findCoordinates(parsedMove, board) {
         if (!parsedMove || parsedMove.type !== 'move') return null;
 
-        const { piece, fromCol, action, target, isRed } = parsedMove;
+        const { piece, fromCol, action, target, isRed, prefix } = parsedMove;
         const color = isRed ? 'red' : 'black';
 
-        // 查找所有符合条件的棋子（列匹配）
-        const candidates = [];
+        // 查找所有符合条件的棋子
+        let candidates = [];
         for (let y = 0; y < 10; y++) {
             for (let x = 0; x < 9; x++) {
                 const p = board[y][x];
                 if (p && pieceMap[p.type] === piece && p.color === color) {
-                    if (x === fromCol) {
+                    // 如果有明确的fromCol，只匹配该列
+                    // 如果是前/后前缀（fromCol为null），收集所有该类型的棋子
+                    if (fromCol === null || x === fromCol) {
                         candidates.push({ x, y, piece: p });
                     }
                 }
@@ -118,6 +146,22 @@ const MoveParser = (function() {
         if (candidates.length === 0) {
             console.warn('未找到符合条件的棋子:', parsedMove);
             return null;
+        }
+
+        // 处理前/后前缀：当有多个候选时，根据y坐标选择
+        if (prefix && candidates.length >= 1) {
+            // 按y坐标排序
+            candidates.sort((a, b) => a.y - b.y);
+            
+            if (prefix === '前') {
+                // 红方：y小的是前（靠近对方）
+                // 黑方：y大的是前（靠近对方）
+                candidates = isRed ? [candidates[0]] : [candidates[candidates.length - 1]];
+            } else if (prefix === '后') {
+                // 红方：y大的是后
+                // 黑方：y小的是后
+                candidates = isRed ? [candidates[candidates.length - 1]] : [candidates[0]];
+            }
         }
 
         // 计算目标列的x坐标
@@ -140,14 +184,18 @@ const MoveParser = (function() {
                 // 平：横向移动，行不变
                 toY = y;
                 toX = targetColX;
-                valid = true;
+                valid = isValidTarget(board, x, y, toX, toY, color);
             } else if (action === '进') {
                 // 进：向对方方向前进
                 if (isRed) {
                     // 红方向上（y减小）
-                    if (piece === 'pawn' || piece === 'king' || piece === 'advisor') {
+                    if (piece === 'pawn' || piece === 'king') {
                         toY = y - target;
                         toX = x;
+                    } else if (piece === 'advisor') {
+                        // 士斜走一格：目标列号是目标位置的列
+                        toX = isRed ? (9 - target) : (target - 1);
+                        toY = y - 1; // 士只能向前走一格
                     } else if (piece === 'elephant') {
                         toY = y - 2;
                         toX = x + (target === 3 ? -2 : 2);
@@ -167,9 +215,13 @@ const MoveParser = (function() {
                     }
                 } else {
                     // 黑方向下（y增加）
-                    if (piece === 'pawn' || piece === 'king' || piece === 'advisor') {
+                    if (piece === 'pawn' || piece === 'king') {
                         toY = y + target;
                         toX = x;
+                    } else if (piece === 'advisor') {
+                        // 士斜走一格：目标列号是目标位置的列
+                        toX = target - 1;
+                        toY = y + 1; // 士只能向前走一格
                     } else if (piece === 'elephant') {
                         toY = y + 2;
                         toX = x + (target === 3 ? -2 : 2);
@@ -191,9 +243,13 @@ const MoveParser = (function() {
             } else if (action === '退') {
                 // 退：向己方方向后退
                 if (isRed) {
-                    if (piece === 'king' || piece === 'advisor') {
+                    if (piece === 'king') {
                         toY = y + target;
                         toX = x;
+                    } else if (piece === 'advisor') {
+                        // 士斜走一格向后
+                        toX = isRed ? (9 - target) : (target - 1);
+                        toY = y + 1; // 士只能向后走一格
                     } else if (piece === 'horse') {
                         toX = isRed ? (9 - target) : (target - 1);
                         const dx = toX - x;
@@ -208,9 +264,13 @@ const MoveParser = (function() {
                         toX = x;
                     }
                 } else {
-                    if (piece === 'king' || piece === 'advisor') {
+                    if (piece === 'king') {
                         toY = y - target;
                         toX = x;
+                    } else if (piece === 'advisor') {
+                        // 士斜走一格向后
+                        toX = target - 1;
+                        toY = y - 1; // 士只能向后走一格
                     } else if (piece === 'horse') {
                         toX = target - 1;
                         const dx = toX - x;
@@ -356,32 +416,41 @@ const MoveParser = (function() {
 
     /**
      * 将坐标转换为中文记谱法
+     * 规则：
+     * - 红方列号用中文数字（一至九），黑方用阿拉伯数字（1-9）
+     * - 棋子显示与棋盘一致（红方用异体字，黑方用传统字）
      */
     function toNotation(move) {
         const { fromX, fromY, toX, toY, piece } = move;
         const color = piece.color;
         const isRed = color === 'red';
         
-        const pieceChar = pieceToChinese[pieceMap[piece.type]].red;
+        // 获取棋子字符（与棋盘显示一致）
+        const pieceType = pieceMap[piece.type];
+        const pieceChar = pieceToChinese[pieceType][color];
         
+        // 列号：红方用中文数字，黑方用阿拉伯数字
         const fromColNum = isRed ? (9 - fromX) : (fromX + 1);
-        const fromCol = numToChinese[fromColNum];
+        const fromCol = isRed ? numToChinese[fromColNum] : fromColNum.toString();
         
         const dy = toY - fromY;
         let action, target;
         
         if (toX === fromX) {
+            // 纵向移动：进/退 + 步数
             const steps = Math.abs(dy);
             action = (isRed && dy < 0) || (!isRed && dy > 0) ? '进' : '退';
-            target = numToChinese[steps];
+            target = isRed ? numToChinese[steps] : steps.toString();
         } else if (toY === fromY) {
+            // 横向移动：平 + 目标列
             action = '平';
             const toColNum = isRed ? (9 - toX) : (toX + 1);
-            target = numToChinese[toColNum];
+            target = isRed ? numToChinese[toColNum] : toColNum.toString();
         } else {
+            // 斜向移动（马、象、士）：进/退 + 目标列
             const toColNum = isRed ? (9 - toX) : (toX + 1);
             action = (isRed && dy < 0) || (!isRed && dy > 0) ? '进' : '退';
-            target = numToChinese[toColNum];
+            target = isRed ? numToChinese[toColNum] : toColNum.toString();
         }
         
         return `${pieceChar}${fromCol}${action}${target}`;
