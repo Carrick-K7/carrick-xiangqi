@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Miku teal/cyan color: #39C5BB -->
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#39C5BB" stroke="#2AA8A0" stroke-width="2"/>
+  <!-- Musical note (eighth notes/beamed notes) -->
+  <path d="M30 65 L30 35 L60 30 L60 60" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="25" cy="65" rx="8" ry="6" fill="white" transform="rotate(-20 25 65)"/>
+  <ellipse cx="55" cy="60" rx="8" ry="6" fill="white" transform="rotate(-20 55 60)"/>
+  <!-- Stem connector -->
+  <path d="M30 35 L60 30" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/>
+</svg>

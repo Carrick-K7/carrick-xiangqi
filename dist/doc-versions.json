@@ -1,0 +1,120 @@
+{
+  "carrick_team_best_practice": [
+    {
+      "hash": "1ad8b906",
+      "fullHash": "1ad8b906f8deaeb06e645ed895c8a92685634f35",
+      "date": "2026-02-10 15:20:58 +0000",
+      "author": "Carrick",
+      "message": "feat(T-003): 完成演奏评分和进步追踪系统"
+    },
+    {
+      "hash": "f59ea60a",
+      "fullHash": "f59ea60a3b4cb4dd5f50cb9fdf5b1ea81aba0683",
+      "date": "2026-02-10 06:51:27 +0000",
+      "author": "Carrick",
+      "message": "refactor(dashboard): 从Milestone+Task转为纯Task模式"
+    },
+    {
+      "hash": "b8a09f9e",
+      "fullHash": "b8a09f9ecd0c11adc14f7cefdb0c971a78b20604",
+      "date": "2026-02-10 00:52:59 +0000",
+      "author": "Carrick",
+      "message": "fix(xiangqi): 修复黑棋吃子Bug"
+    }
+  ],
+  "dev_workflow_spec": [
+    {
+      "hash": "b8a09f9e",
+      "fullHash": "b8a09f9ecd0c11adc14f7cefdb0c971a78b20604",
+      "date": "2026-02-10 00:52:59 +0000",
+      "author": "Carrick",
+      "message": "fix(xiangqi): 修复黑棋吃子Bug"
+    }
+  ],
+  "sre_spec": [
+    {
+      "hash": "b8a09f9e",
+      "fullHash": "b8a09f9ecd0c11adc14f7cefdb0c971a78b20604",
+      "date": "2026-02-10 00:52:59 +0000",
+      "author": "Carrick",
+      "message": "fix(xiangqi): 修复黑棋吃子Bug"
+    }
+  ],
+  "qa_spec": [
+    {
+      "hash": "b8a09f9e",
+      "fullHash": "b8a09f9ecd0c11adc14f7cefdb0c971a78b20604",
+      "date": "2026-02-10 00:52:59 +0000",
+      "author": "Carrick",
+      "message": "fix(xiangqi): 修复黑棋吃子Bug"
+    }
+  ],
+  "ctt-output-formats": [
+    {
+      "hash": "1ad8b906",
+      "fullHash": "1ad8b906f8deaeb06e645ed895c8a92685634f35",
+      "date": "2026-02-10 15:20:58 +0000",
+      "author": "Carrick",
+      "message": "feat(T-003): 完成演奏评分和进步追踪系统"
+    },
+    {
+      "hash": "f59ea60a",
+      "fullHash": "f59ea60a3b4cb4dd5f50cb9fdf5b1ea81aba0683",
+      "date": "2026-02-10 06:51:27 +0000",
+      "author": "Carrick",
+      "message": "refactor(dashboard): 从Milestone+Task转为纯Task模式"
+    }
+  ],
+  "aar-execution-improvement": [
+    {
+      "hash": "1ad8b906",
+      "fullHash": "1ad8b906f8deaeb06e645ed895c8a92685634f35",
+      "date": "2026-02-10 15:20:58 +0000",
+      "author": "Carrick",
+      "message": "feat(T-003): 完成演奏评分和进步追踪系统"
+    },
+    {
+      "hash": "f59ea60a",
+      "fullHash": "f59ea60a3b4cb4dd5f50cb9fdf5b1ea81aba0683",
+      "date": "2026-02-10 06:51:27 +0000",
+      "author": "Carrick",
+      "message": "refactor(dashboard): 从Milestone+Task转为纯Task模式"
+    }
+  ],
+  "km_spec": [
+    {
+      "hash": "b8a09f9e",
+      "fullHash": "b8a09f9ecd0c11adc14f7cefdb0c971a78b20604",
+      "date": "2026-02-10 00:52:59 +0000",
+      "author": "Carrick",
+      "message": "fix(xiangqi): 修复黑棋吃子Bug"
+    }
+  ],
+  "persistent_spec": [
+    {
+      "hash": "b8a09f9e",
+      "fullHash": "b8a09f9ecd0c11adc14f7cefdb0c971a78b20604",
+      "date": "2026-02-10 00:52:59 +0000",
+      "author": "Carrick",
+      "message": "fix(xiangqi): 修复黑棋吃子Bug"
+    }
+  ],
+  "execution-log": [
+    {
+      "hash": "b8a09f9e",
+      "fullHash": "b8a09f9ecd0c11adc14f7cefdb0c971a78b20604",
+      "date": "2026-02-10 00:52:59 +0000",
+      "author": "Carrick",
+      "message": "fix(xiangqi): 修复黑棋吃子Bug"
+    }
+  ],
+  "task-template": [
+    {
+      "hash": "f59ea60a",
+      "fullHash": "f59ea60a3b4cb4dd5f50cb9fdf5b1ea81aba0683",
+      "date": "2026-02-10 06:51:27 +0000",
+      "author": "Carrick",
+      "message": "refactor(dashboard): 从Milestone+Task转为纯Task模式"
+    }
+  ]
+}

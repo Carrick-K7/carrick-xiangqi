@@ -1,0 +1,326 @@
+{
+  "generatedAt": "2026-02-10T16:35:34.805Z",
+  "totalCommits": 32,
+  "commits": [
+    {
+      "hash": "ec21d0c6",
+      "fullHash": "ec21d0c67e43c5b1693f4da0830dec2a7344b343",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T15:30:00.000Z",
+      "timestamp": 1770737400000,
+      "message": "T-022: 集成真实cron数据到定时任务模块",
+      "type": "code"
+    },
+    {
+      "hash": "1ad8b906",
+      "fullHash": "1ad8b906f8deaeb06e645ed895c8a92685634f35",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T15:20:58.000Z",
+      "timestamp": 1770736858000,
+      "message": "feat(T-003): 完成演奏评分和进步追踪系统",
+      "type": "code"
+    },
+    {
+      "hash": "e7a97a96",
+      "fullHash": "e7a97a961acee6e93d0a4b694cf85acddba3ccbf",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T07:20:57.000Z",
+      "timestamp": 1770708057000,
+      "message": "feat(dashboard): 重构驾驶舱+Bug修复",
+      "type": "code"
+    },
+    {
+      "hash": "f59ea60a",
+      "fullHash": "f59ea60a3b4cb4dd5f50cb9fdf5b1ea81aba0683",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T06:51:27.000Z",
+      "timestamp": 1770706287000,
+      "message": "refactor(dashboard): 从Milestone+Task转为纯Task模式",
+      "type": "code"
+    },
+    {
+      "hash": "0c5b35b9",
+      "fullHash": "0c5b35b90874d18d875e2b122b1d6f218e558d5e",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T06:51:13.000Z",
+      "timestamp": 1770706273000,
+      "message": "refactor: 刷新为纯Task模式",
+      "type": "code"
+    },
+    {
+      "hash": "4817cd29",
+      "fullHash": "4817cd2911140073460d114d719758f30d2b5861",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T05:01:07.000Z",
+      "timestamp": 1770699667000,
+      "message": "feat(dashboard): M5项目列表 + M9移除活动",
+      "type": "code"
+    },
+    {
+      "hash": "8850870d",
+      "fullHash": "8850870d39b13710be20e8c5316b6a82b3d14d85",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T05:00:55.000Z",
+      "timestamp": 1770699655000,
+      "message": "feat(dashboard): M6团队简报功能",
+      "type": "code"
+    },
+    {
+      "hash": "0e274819",
+      "fullHash": "0e274819080321cb1ff44035852ff69986553f12",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T03:22:52.000Z",
+      "timestamp": 1770693772000,
+      "message": "docs: 添加Milestone+Tag流程说明",
+      "type": "doc"
+    },
+    {
+      "hash": "7bdb7828",
+      "fullHash": "7bdb78287bad6ddc45810dbdbae4af9d269a464b",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T00:55:57.000Z",
+      "timestamp": 1770684957000,
+      "message": "feat(toolbox): Milestone 3 - 时间转换器和密码生成器",
+      "type": "code"
+    },
+    {
+      "hash": "b8a09f9e",
+      "fullHash": "b8a09f9ecd0c11adc14f7cefdb0c971a78b20604",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-10T00:52:59.000Z",
+      "timestamp": 1770684779000,
+      "message": "fix(xiangqi): 修复黑棋吃子Bug",
+      "type": "bugfix"
+    },
+    {
+      "hash": "eff3a1b3",
+      "fullHash": "eff3a1b3aa82118cbf37012ddac60452e79208b7",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-08T09:18:14.000Z",
+      "timestamp": 1770542294000,
+      "message": "Dashboard v1.0 重构完成 - Phase 1&2",
+      "type": "code"
+    },
+    {
+      "hash": "a95a12d2",
+      "fullHash": "a95a12d2520fd804b7f9ccea8142ed059c8696dc",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-08T08:27:47.000Z",
+      "timestamp": 1770539267000,
+      "message": "fix: 修复黑方象、士、将移动规则和吃子功能",
+      "type": "bugfix"
+    },
+    {
+      "hash": "a55b9a2e",
+      "fullHash": "a55b9a2e4209eebce1aeadc516819cc3eea225cf",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-08T06:54:02.000Z",
+      "timestamp": 1770533642000,
+      "message": "feat(xiangqi): 实现将军/应将/和棋规则",
+      "type": "code"
+    },
+    {
+      "hash": "3070f430",
+      "fullHash": "3070f430062678a8cf66e853017c473cc1a31755",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-08T05:47:01.000Z",
+      "timestamp": 1770529621000,
+      "message": "docs: 刷新 PTT V2 文档（今日完整版计划）- Product/Tech/Task Spec",
+      "type": "doc"
+    },
+    {
+      "hash": "c7908a29",
+      "fullHash": "c7908a29db1ba36803865b946d6cb64dbe18b49a",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-08T02:03:43.000Z",
+      "timestamp": 1770516223000,
+      "message": "feat: integrate rule validator into game UI",
+      "type": "code"
+    },
+    {
+      "hash": "ae6f0a88",
+      "fullHash": "ae6f0a88935c727e932b7097e978af9529185c8b",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-08T02:01:58.000Z",
+      "timestamp": 1770516118000,
+      "message": "refactor: optimize piece rules and validator structure",
+      "type": "code"
+    },
+    {
+      "hash": "263b82a5",
+      "fullHash": "263b82a53fc437eae73edd28930ecc2a248177bc",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-08T02:00:56.000Z",
+      "timestamp": 1770516056000,
+      "message": "feat: implement xiangqi validator and piece rules (Green phase)",
+      "type": "code"
+    },
+    {
+      "hash": "bb8b2467",
+      "fullHash": "bb8b24672bdedba6e42a4fd7e5672376f0d4e2fc",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-08T01:59:18.000Z",
+      "timestamp": 1770515958000,
+      "message": "test: add validator.test.js - 38 tests for xiangqi rules (Red phase)",
+      "type": "code"
+    },
+    {
+      "hash": "e17575d6",
+      "fullHash": "e17575d6f2b9308038dd72c0629559852f098daf",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-07T23:00:04.000Z",
+      "timestamp": 1770505204000,
+      "message": "refactor: 优化规则代码 (Refactor)",
+      "type": "code"
+    },
+    {
+      "hash": "2883e13a",
+      "fullHash": "2883e13a8c3a85bac34f195a1bf843aa23c19174",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-07T22:59:58.000Z",
+      "timestamp": 1770505198000,
+      "message": "feat: 实现象棋规则验证 (Green)",
+      "type": "code"
+    },
+    {
+      "hash": "0a90be93",
+      "fullHash": "0a90be93dc1c65bd367f6316570cb130e5d055c7",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-07T22:59:42.000Z",
+      "timestamp": 1770505182000,
+      "message": "test: 添加规则验证测试 (Red)",
+      "type": "code"
+    },
+    {
+      "hash": "1127322d",
+      "fullHash": "1127322d323e0e3cb3034353588b47bb0a85ba85",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-07T22:54:36.000Z",
+      "timestamp": 1770504876000,
+      "message": "fix: 添加 AI 引擎错误处理",
+      "type": "bugfix"
+    },
+    {
+      "hash": "63693b02",
+      "fullHash": "63693b02b9d67dc5df83d9ee7c41ef84f4f2b2e0",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-07T21:36:47.000Z",
+      "timestamp": 1770500207000,
+      "message": "test: 添加引擎测试页面",
+      "type": "code"
+    },
+    {
+      "hash": "ad748da2",
+      "fullHash": "ad748da2cbd81fdb3193ff26f00f7e221d7d9709",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-07T21:36:34.000Z",
+      "timestamp": 1770500194000,
+      "message": "fix: 修复棋子属性访问 - 使用 type 而非 text",
+      "type": "bugfix"
+    },
+    {
+      "hash": "c3d3ec6f",
+      "fullHash": "c3d3ec6f8a95700e1ae0622406ce7ef3c3e1ae3f",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-07T21:36:27.000Z",
+      "timestamp": 1770500187000,
+      "message": "完善棋盘交互功能",
+      "type": "code"
+    },
+    {
+      "hash": "ee89989e",
+      "fullHash": "ee89989ee7c444692f78f78a5976882ebfbc51d3",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-07T21:36:00.000Z",
+      "timestamp": 1770500160000,
+      "message": "feat: 接入 Pikafish 象棋引擎",
+      "type": "code"
+    },
+    {
+      "hash": "4caf8feb",
+      "fullHash": "4caf8feb69a0b9a2a0699ecfeee17d54726f118f",
+      "author": "Carrick",
+      "email": "xck7k7@gmail.com",
+      "date": "2026-02-07T21:35:08.000Z",
+      "timestamp": 1770500108000,
+      "message": "重构棋盘UI: 使用CSS Grid精确坐标系统",
+      "type": "design"
+    },
+    {
+      "hash": "ff9a054f",
+      "fullHash": "ff9a054fe1c5decafc3943343682862677590c9a",
+      "author": "Carrick-K7",
+      "email": "carrick@example.com",
+      "date": "2026-02-07T15:07:08.000Z",
+      "timestamp": 1770476828000,
+      "message": "Miku 推送日志启动 - 2026-02-07 23:06",
+      "type": "code"
+    },
+    {
+      "hash": "daf3eada",
+      "fullHash": "daf3eada8d7f41f9013c98702b2f7be54b55386f",
+      "author": "Drum App Developer",
+      "email": "drum-app@openclaw.local",
+      "date": "2026-02-05T04:18:44.000Z",
+      "timestamp": 1770265124000,
+      "message": "feat: Phase 4 - 伴奏模式开发完成",
+      "type": "code"
+    },
+    {
+      "hash": "65edb1d7",
+      "fullHash": "65edb1d7c74ab969b2d61f415992dd4a72427278",
+      "author": "Drum App Developer",
+      "email": "drum-app@openclaw.local",
+      "date": "2026-02-05T01:48:25.000Z",
+      "timestamp": 1770256105000,
+      "message": "Phase 3: 增强功能开发完成",
+      "type": "code"
+    },
+    {
+      "hash": "6521fae1",
+      "fullHash": "6521fae10ea31eb027aa0e62f0bc176ba502257b",
+      "author": "Drum App Developer",
+      "email": "drum-app@openclaw.local",
+      "date": "2026-02-05T00:46:41.000Z",
+      "timestamp": 1770252401000,
+      "message": "更新task_spec.md: Phase 2完成",
+      "type": "code"
+    },
+    {
+      "hash": "4292eda8",
+      "fullHash": "4292eda8b4d818d8b82e55faf24f7d12cd156515",
+      "author": "Drum App Developer",
+      "email": "drum-app@openclaw.local",
+      "date": "2026-02-05T00:46:19.000Z",
+      "timestamp": 1770252379000,
+      "message": "Phase 2: 核心功能开发完成",
+      "type": "code"
+    }
+  ]
+}
