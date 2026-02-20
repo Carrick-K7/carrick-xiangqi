@@ -1,0 +1,117 @@
+{
+  "date": "2026-02-20",
+  "timezone": "Asia/Shanghai",
+  "generated_at": "2026-02-20T16:00:00Z",
+  "projects": [
+    {
+      "name": "Dashboard",
+      "version": "v2.0.0",
+      "status": "online",
+      "milestone": "小说阅读功能完成",
+      "completed_tasks": ["T-036", "T-037", "T-039", "T-041", "T-043"],
+      "pending_tasks": ["T-033"],
+      "ci_cd": { "build": true, "deploy": true },
+      "next_step": "T-033 验收后修正",
+      "risk": "T-033 待验收"
+    },
+    {
+      "name": "Xiangqi",
+      "version": "v1.0.0",
+      "status": "online",
+      "milestone": "全部核心功能完成",
+      "completed_tasks": ["T-001", "T-002", "T-003", "T-004", "T-005", "T-008", "T-030"],
+      "pending_tasks": [],
+      "ci_cd": { "build": true, "deploy": true },
+      "next_step": "待重新启动，技术选型",
+      "risk": "项目暂停，待决策"
+    },
+    {
+      "name": "Toolbox",
+      "version": "v1.0.0",
+      "status": "online",
+      "milestone": "工具集合稳定运行",
+      "completed_tasks": ["T-001", "T-002", "T-003"],
+      "pending_tasks": ["T-004"],
+      "ci_cd": { "build": true, "deploy": true },
+      "next_step": "启动 T-004 移动端适配",
+      "risk": null
+    },
+    {
+      "name": "Drum",
+      "version": "v1.0.0",
+      "status": "online",
+      "milestone": "核心练习功能完成",
+      "completed_tasks": ["T-001", "T-003", "T-004", "T-040"],
+      "pending_tasks": ["T-002"],
+      "ci_cd": { "build": true, "deploy": true },
+      "next_step": "教学模式 + MP3 识别功能开发",
+      "risk": null
+    },
+    {
+      "name": "Insight",
+      "version": "v0.1.0",
+      "status": "planning",
+      "milestone": "系统设计完成",
+      "completed_tasks": [],
+      "pending_tasks": ["T-001", "T-002", "T-003", "T-004", "T-005", "T-006", "T-007"],
+      "ci_cd": { "build": false, "deploy": false },
+      "next_step": "启动 T-001，搭建基础架构",
+      "risk": "7 个 Task 全部待启动"
+    },
+    {
+      "name": "Novel",
+      "version": "v1.0.0",
+      "status": "online",
+      "milestone": "独立部署完成",
+      "completed_tasks": ["T-001", "T-002", "T-003", "T-004"],
+      "pending_tasks": ["T-005"],
+      "ci_cd": { "build": true, "deploy": true },
+      "next_step": "更新 Task 文件，T-005 开发",
+      "risk": "Task 文件状态滞后"
+    }
+  ],
+  "statistics": {
+    "total_projects": 6,
+    "online": 5,
+    "in_development": 0,
+    "planning": 1,
+    "tasks_completed_today": 4,
+    "tasks_pending": 8
+  },
+  "scheduled_tasks": {
+    "novel_sync": {
+      "count": 1,
+      "success": 1,
+      "new_chapters": 133,
+      "total_chapters": 133
+    },
+    "ctt_briefing": {
+      "count": 4,
+      "success": 4,
+      "pushdeer_status": "normal"
+    },
+    "team_heartbeat": {
+      "count": 1,
+      "success": 1,
+      "git_status": "normal"
+    }
+  },
+  "yesterday_completed": [
+    "[Dashboard] T-036 添加关于按钮显示版本信息",
+    "[Dashboard] T-037/039 iOS 滚动问题修复",
+    "[Dashboard] T-043 轻小说剥离 Dashboard",
+    "[Drum] T-040 新增待办页面"
+  ],
+  "today_plan": [
+    "[Dashboard] T-033 版块修复验收",
+    "[Novel] 更新 T-001~T-004 Task 文件状态",
+    "[Novel] T-005 切换章节跳转顶部开发",
+    "[Toolbox] 评估 T-004 移动端优化启动时间",
+    "[Insight] 排期评估，确定启动时间"
+  ],
+  "risks": [
+    "Insight 项目待排期：7 个 Task 全部待启动",
+    "Xiangqi 项目暂停：待 Carrick 决策技术栈",
+    "Novel Task 文件状态滞后"
+  ]
+}
