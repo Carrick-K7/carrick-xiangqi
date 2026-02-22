@@ -13,9 +13,13 @@
 
 | Task | 描述 | 状态 | 文件 |
 |:---:|:---|:---:|:---|
-| T-001 | 项目初始化与技术选型 | ⏳ 待启动 | tasks/T-001.md |
-| T-002 | 着法显示与动画优化 | ✅ 已完成 | tasks/T-002-notation-animation-optimize.md |
-| T-003 | 移动端适配修复 | ⏳ 待启动 | tasks/T-003-Mobile-Xiangqi-Fix.md |
+| T-001 | 基础棋盘开发 | ✅ 已完成 | tasks/T-001.md |
+| T-002 | AI分析功能 | ✅ 已完成 | tasks/T-002-notation-animation-optimize.md |
+| T-003 | 棋谱浏览功能 | ✅ 已完成 | tasks/T-003-Mobile-Xiangqi-Fix.md |
+| T-004 | 烂柯验证功能 | ✅ 已完成 | tasks/T-004.md |
+| T-005 | 生产环境部署 | ✅ 已完成 | tasks/T-005.md |
+| T-006 | 棋谱推演功能 (弃马十三招) | ✅ 已完成 | tasks/T-006.md |
+| T-007 | 着法显示与动画优化 | ✅ 已完成 | tasks/T-007.md |
 
 ## 当前状态
 - ⏳ 待启动: 项目基础架构搭建
