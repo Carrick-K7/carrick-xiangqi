@@ -1,13 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Xiangqi - 中国象棋棋盘/棋子 -->
-  <!-- 棋盘外框 -->
-  <rect x="15" y="15" width="70" height="70" rx="3" fill="none" stroke="#39C5BB" stroke-width="3"/>
-  <!-- 楚河汉界 -->
-  <line x1="15" y1="50" x2="85" y2="50" stroke="#39C5BB" stroke-width="2" stroke-dasharray="4,4"/>
-  <!-- 棋子 - 将/帅 -->
-  <circle cx="50" cy="35" r="12" fill="none" stroke="#39C5BB" stroke-width="3"/>
-  <text x="50" y="41" font-size="14" text-anchor="middle" fill="#39C5BB" font-family="serif" font-weight="bold">将</text>
-  <!-- 棋子 - 卒/兵 -->
-  <circle cx="35" cy="65" r="8" fill="none" stroke="#39C5BB" stroke-width="2"/>
-  <circle cx="65" cy="65" r="8" fill="none" stroke="#39C5BB" stroke-width="2"/>
+  <!-- Xiangqi - 填充版 -->
+  <circle cx="50" cy="50" r="45" fill="#39C5BB"/>
+  <!-- 棋盘外框白色 -->
+  <rect x="18" y="18" width="64" height="64" rx="4" fill="none" stroke="white" stroke-width="3"/>
+  <!-- 楚河汉界虚线 -->
+  <line x1="18" y1="50" x2="82" y2="50" stroke="white" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- 将/帅棋子 -->
+  <circle cx="50" cy="34" r="14" fill="none" stroke="white" stroke-width="3"/>
+  <text x="50" y="40" font-size="16" text-anchor="middle" fill="white" font-family="serif" font-weight="bold">将</text>
+  <!-- 卒棋子 -->
+  <circle cx="32" cy="66" r="9" fill="none" stroke="white" stroke-width="2"/>
+  <circle cx="68" cy="66" r="9" fill="none" stroke="white" stroke-width="2"/>
 </svg>
