@@ -1,14 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Xiangqi - 填充版 -->
   <circle cx="50" cy="50" r="45" fill="#39C5BB"/>
-  <!-- 棋盘外框白色 -->
-  <rect x="18" y="18" width="64" height="64" rx="4" fill="none" stroke="white" stroke-width="3"/>
-  <!-- 楚河汉界虚线 -->
-  <line x1="18" y1="50" x2="82" y2="50" stroke="white" stroke-width="2" stroke-dasharray="5,3"/>
-  <!-- 将/帅棋子 -->
-  <circle cx="50" cy="34" r="14" fill="none" stroke="white" stroke-width="3"/>
-  <text x="50" y="40" font-size="16" text-anchor="middle" fill="white" font-family="serif" font-weight="bold">将</text>
-  <!-- 卒棋子 -->
-  <circle cx="32" cy="66" r="9" fill="none" stroke="white" stroke-width="2"/>
-  <circle cx="68" cy="66" r="9" fill="none" stroke="white" stroke-width="2"/>
+  <text x="50" y="68" font-size="55" text-anchor="middle" fill="white" font-family="Consolas, monospace" font-weight="bold">X</text>
 </svg>
