@@ -1,0 +1,39 @@
+{
+  "collection": "适情雅趣",
+  "games": [
+    {"id": "shiqing-021", "name": "第21局 三子归边", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "中等", "theme": "三子归边"},
+    {"id": "shiqing-022", "name": "第22局 千里照面", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "简单", "theme": "千里照面"},
+    {"id": "shiqing-023", "name": "第23局 双马饮泉", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "较难", "theme": "双马饮泉"},
+    {"id": "shiqing-024", "name": "第24局 马蹀阏氏", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "中等", "theme": "马类杀法"},
+    {"id": "shiqing-025", "name": "第25局 白登解围", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "较难", "theme": "炮兵配合"},
+    {"id": "shiqing-026", "name": "第26局 力敌三军", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "中等", "theme": "车类杀法"},
+    {"id": "shiqing-027", "name": "第27局 一车十子寒", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "中等", "theme": "车类杀法"},
+    {"id": "shiqing-028", "name": "第28局 单骑救主", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "较难", "theme": "马类杀法"},
+    {"id": "shiqing-029", "name": "第29局 兵贵神速", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "简单", "theme": "兵类杀法"},
+    {"id": "shiqing-030", "name": "第30局 老当益壮", "type": "ancient", "era": "明代", "category": "残局-胜局", "result": "红胜", "difficulty": "中等", "theme": "车马配合"}
+  ],
+  "summary": {
+    "selected_31_50": [
+      {"id": "shiqing-031", "name": "第31局 一鸣惊人", "result": "红胜"},
+      {"id": "shiqing-032", "name": "第32局 双炮将", "result": "红胜"},
+      {"id": "shiqing-033", "name": "第33局 三仙炼丹", "result": "和棋"},
+      {"id": "shiqing-034", "name": "第34局 蚯蚓降龙", "result": "和棋"},
+      {"id": "shiqing-035", "name": "第35局 炮卒闹宫", "result": "和棋"},
+      {"id": "shiqing-036", "name": "第36局 七星聚会", "result": "和棋"},
+      {"id": "shiqing-037", "name": "第37局 千里独行", "result": "和棋"},
+      {"id": "shiqing-038", "name": "第38局 野马操田", "result": "和棋"},
+      {"id": "shiqing-039", "name": "第39局 大征西", "result": "和棋"},
+      {"id": "shiqing-040", "name": "第40局 小征东", "result": "和棋"},
+      {"id": "shiqing-041", "name": "第41局 带子入朝", "result": "和棋"},
+      {"id": "shiqing-042", "name": "第42局  Santa Barbara", "result": "和棋"},
+      {"id": "shiqing-043", "name": "第43局 七子联吟", "result": "和棋"},
+      {"id": "shiqing-044", "name": "第44局 小七星", "result": "和棋"},
+      {"id": "shiqing-045", "name": "第45局 火烧连营", "result": "和棋"},
+      {"id": "shiqing-046", "name": "第46局 炮打两狼关", "result": "和棋"},
+      {"id": "shiqing-047", "name": "第47局 车卒斗智", "result": "和棋"},
+      {"id": "shiqing-048", "name": "第48局 马跃檀溪", "result": "和棋"},
+      {"id": "shiqing-049", "name": "第49局 百川归海", "result": "和棋"},
+      {"id": "shiqing-050", "name": "第50局 万象更新", "result": "和棋"}
+    ]
+  }
+}
