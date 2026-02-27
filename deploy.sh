@@ -5,7 +5,7 @@
 set -e  # 遇到错误立即退出
 
 PROJECT_DIR="/root/.openclaw/workspace/projects/carrick-xiangqi"
-DEPLOY_DIR="/var/www/xiangqi"
+DEPLOY_DIR="/var/www/carrick-xiangqi"
 DOMAIN="xiangqi.carrick7.com"
 
 echo "🏮 Xiangqi 部署开始..."
@@ -28,9 +28,9 @@ echo "   页面标题: $TITLE"
 
 # 3. 部署
 echo "📤 步骤3: 部署文件..."
-sudo mkdir -p "$DEPLOY_DIR/dist"
-sudo rm -rf "$DEPLOY_DIR/dist"/*
-sudo cp -r dist/* "$DEPLOY_DIR/dist/"
+sudo mkdir -p "$DEPLOY_DIR"
+sudo rm -rf "$DEPLOY_DIR"/*
+sudo cp -r dist/* "$DEPLOY_DIR/"
 
 # 4. 验证部署
 echo "✅ 步骤4: 验证部署..."
