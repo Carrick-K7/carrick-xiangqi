@@ -5,7 +5,7 @@
 set -e  # 遇到错误立即退出
 
 PROJECT_DIR="/root/.openclaw/workspace/projects/carrick-xiangqi"
-DEPLOY_DIR="/var/www/carrick-xiangqi"
+DEPLOY_DIR="/var/www/xiangqi.carrick7.com"
 DOMAIN="xiangqi.carrick7.com"
 
 echo "🏮 Xiangqi 部署开始..."
@@ -54,3 +54,10 @@ echo "🎉 Xiangqi 部署成功!"
 echo "🌐 访问: https://$DOMAIN"
 echo ""
 echo "提示: 如果仍看到旧版本，请 Ctrl+F5 强制刷新浏览器"
+
+# 自动触发基础设施重载（除非跳过）
+if [ -z "$SKIP_INFRA_RELOAD" ]; then
+    echo "🔄 触发基础设施重载..."
+    cd /root/.openclaw/workspace/projects/carrick-infra
+    bash deploy.sh
+fi
